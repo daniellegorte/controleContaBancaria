@@ -25,39 +25,49 @@ public class ContaBancaria {
         System.out.println("3. Transferir valor");
         System.out.println("4. Sair");
         System.out.println("");
+        
+        do{
+        System.out.println("DIGITE A OPÇÃO DESEJADA:");
         opcao = sc.nextInt();
+            if(opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4){
+                System.out.println("OPÇÃO INVALIDA, TENTE NOVAMENTE.");
+            }
+        } while (opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4 );
         
         switch (opcao){
             case 1:
                 System.out.println(String.format("Saldo Inicial: %.2f" ,saldo));
+                 System.out.println("");
                 break;
                 
             case 2:
                 System.out.println("Digite o valor a ser recebido: ");
                 saldoReceber = sc.nextDouble();
-                saldo = saldoReceber + saldo;
+                saldo += saldoReceber;
+                System.out.println("");
                 break;
                 
             case 3:
-                System.out.println("Digite o valor a ser transferido: ");
                 do{
+                    System.out.println("Digite o valor a ser transferido: ");
                     saldoTransferir = sc.nextDouble();
                     if (saldoTransferir > saldo){
                         System.out.println("Não é possível transferir pois não há valor disponível. Tente outro valor.");
-                        System.out.println(String.format("Saldo atual: %.2f" , saldo));
                     } else if (saldoTransferir <= saldo){
-                        saldo = saldo - saldoTransferir;
+                        saldo -= saldoTransferir;
                     }
                 } while (saldoTransferir > saldo);
-                
                 System.out.println(String.format("A transferência foi realizada.  Saldo atual: R$%.2f" ,saldo));
+                System.out.println("");
                 break;
                 
             case 4:
             System.out.println("PROGRAMA FINALIZADO.");
             break;
         }
+        
     } while (opcao !=4);
         
+        sc.close();
     }
 }
