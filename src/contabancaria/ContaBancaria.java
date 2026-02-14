@@ -51,12 +51,13 @@ public class ContaBancaria {
                 do{
                     System.out.println("Digite o valor a ser transferido: ");
                     saldoTransferir = sc.nextDouble();
-                    if (saldoTransferir > saldo){
-                        System.out.println("Não é possível transferir pois não há valor disponível. Tente outro valor.");
-                    } else if (saldoTransferir <= saldo){
-                        saldo -= saldoTransferir;
+                    
+                    if( saldoTransferir > saldo){
+                    System.out.println("Não é possível transferir pois não há valor disponível. Tente outro valor.");
                     }
-                } while (saldoTransferir > saldo);
+                    
+                } while (saldoTransferir > saldo); 
+                saldo -= saldoTransferir;
                 System.out.println(String.format("A transferência foi realizada.  Saldo atual: R$%.2f" ,saldo));
                 System.out.println("");
                 break;
@@ -66,7 +67,7 @@ public class ContaBancaria {
             break;
         }
         
-    } while (opcao !=4);
+    } while (opcao !=4); 
         
         sc.close();
     }
